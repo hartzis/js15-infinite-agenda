@@ -1,39 +1,55 @@
 .calendar-container {
   width: 100%;
   margin: 0 auto;
-  background-color: #aaa;
+  background-color: #555;
 }
 .day-container {
   width: 65%;
   border-radius: 5px;
-  background-color: #fff;
-  border: 5px solid #555;
+  background-color: #aaa;
+  border: 5px solid #ccc;
   margin: 10px auto;
   padding: 10px;
+  text-align: center;
 }
 .day-container:first-child {
   margin: 0 auto;
 }
+.day-title-brdr {
+  background-color: #aaa;
+  border-bottom: 2px solid #ccc;
+  border-bottom-width: 80%;
+}
 .day-date-container {
-  border-right: 2px solid #555;
+  width: 100%;
+  display: inline-block;
+}
+.day {
+  text-align: left;
+  color: #fff;
+  float: left;
+  clear: left;
   width: 100px;
-  display: inline-block;
-  border-right-width: 85%;
+  border-right: 2px solid #ccc;
+  margin-right: 15px;
 }
-.day-of-week {
-  text-align: left;
-}
-.day-date {
-  text-align: left;
-}
+.day-of-week,
+.day-date,
 .day-title {
-  color: #aaa;
-  display: inline-block;
+  color: #fff;
+  padding-left: 15px;
+  text-align: left;
 }
 .day-note {
+  width: 90%;
   height: 100px;
-  background-color: #fff;
-  border-top: 2px solid #555;
-  border-top-width: 80%;
   padding: 15px;
+  color: #fff;
+  text-align: left;
+}
+.note-textarea {
+  width: 95%;
+  height: 100px;
+  padding: 5px;
+  margin: 10px;
 }

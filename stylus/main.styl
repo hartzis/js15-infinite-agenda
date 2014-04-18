@@ -1,7 +1,7 @@
-bkc-cont = #aaa
-brdr-col = #555
-bkc-day = #FFF
-
+bkc-cont = #555
+brdr-col = #ccc
+bkc-day = #aaa
+txt-col = #FFF
 
 .calendar-container
 	width 100%
@@ -16,31 +16,49 @@ bkc-day = #FFF
 	border 5px solid brdr-col
 	margin 10px auto
 	padding 10px
+	text-align center
 	&:first-child
 		margin 0 auto
 
+.day-title-brdr
+	background-color: bkc-day
+	border-bottom: 2px solid brdr-col
+	border-bottom-width: 80%
 
 .day-date-container
-	border-right: 2px solid brdr-col
-	width 100px
+	width 100%
 	display: inline-block
-	border-right-width: 85%
+	
+
+.day
+	text-align: left
+	color txt-col
+	float left
+	clear left
+	width 100px
+	border-right: 2px solid brdr-col
+	margin-right 15px
 
 .day-of-week
-	text-align: left
 
 .day-date
-	text-align: left
 
 .day-title
-	color #aaa
-	display: inline-block
+	color txt-col
+	padding-left: 15px
+	text-align left
 
 .day-note 
+	width 90%
 	height 100px
-	background-color: bkc-day
-	border-top: 2px solid brdr-col
-	border-top-width: 80%
 	padding 15px
+	color txt-col
+	text-align left
+
+.note-textarea
+	width 95%
+	height 100px
+	padding 5px
+	margin 10px
 
 

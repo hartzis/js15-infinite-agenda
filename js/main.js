@@ -78,9 +78,9 @@ $(document).on('ready', function() {
         // if it passes the bottom .85 of document,
         // make one more week of days
         var win = $(window);
-        var posWinBottom75 = ((win.height() * .75) + win.scrollTop()) / $(this).height();
+        var posWinBottom75 = ((win.height() * .98) + win.scrollTop()) / $(this).height();
         console.log(posWinBottom75);
-        if (posWinBottom75 >= .85) {
+        if (posWinBottom75 >= .97) {
             console.log('make new ones!!');
             getDatesArray(daysLoadScroll, 'day-container').map(createDayContainer);
         }

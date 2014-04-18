@@ -17,19 +17,24 @@ var getDateObject = function(thisDate) {
     return dateObject;
 };
 
+var getNextDate = function(inDate) {
+    var tempDate = new Date();
+    return tempDate.setDate(inDate.getDate() + 1)
+}
+
 // return request dates in array
 var getDatesArray = function(totalDates, dayContainerClass) {
     var lastDate = getLastDate(dayContainerClass);
-    var trackDay = new Date();
+    // var trackDay = new Date();
     var datesArray = [];
     for (var i = 1; i <= totalDates; i++) {
-        trackDay.setDate(lastDate.getDate() + i);
-        // console.log('trackDay:', trackDay);
+        lastDate.setDate(lastDate.getDate() + 1);
+        console.log('trackDay:', lastDate);
         // console.log('call getDateObject:', getDateObject(trackDay));
-        datesArray.push(getDateObject(trackDay));
+        datesArray.push(getDateObject(lastDate));
     };
 
-    // console.log(datesArray);
+    console.log(datesArray);
     return datesArray;
 
 };
@@ -43,7 +48,8 @@ var getLastDate = function(dayContainerClass) {
     var dateYear = $(selector).find('.day-year').text()
 
     var lastDate = dateWeekDay + ' ' + dateMonth + ' ' + dateDay + ' ' + dateYear
-    // console.log('getLastDate:', lastDate);
+
     var newDate = new Date(lastDate);
+    console.log('getLastDate:', newDate);
     return newDate;
 };

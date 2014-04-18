@@ -39,6 +39,18 @@ var getDatesArray = function(totalDates, dayContainerClass) {
 
 };
 
+var getEditableDate = function(dayContainer) {
+
+    var dateDay = $(dayContainer).find('.day-date').text()
+    var dateWeekDay = $(dayContainer).find('.day-of-week').text()
+    var dateMonth = $(dayContainer).find('.day-month').text()
+    var dateYear = $(dayContainer).find('.day-year').text()
+
+    var editableDate = dateWeekDay + '-' + dateMonth + '-' + dateDay + '-' + dateYear;
+
+    return editableDate;
+}
+
 // get the last day in DOM using the day container
 var getLastDate = function(dayContainerClass) {
     var selector = '.' + dayContainerClass + ':last'

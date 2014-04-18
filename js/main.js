@@ -16,7 +16,11 @@ var createDay = function(dayToCreate) {
     var dayWeekDay = $('<div class="day-of-week day">').text(dayToCreate.weekday);
     var dayMonth = $('<div class="day-title day-month">').text(dayToCreate.month);
     var dayYear = $('<div class="day-title day-year">').text(dayToCreate.year);
-    var dayNote = $('<div class="day-note editable">').text('Enter Day Events Here');
+
+    // check for local note and set note
+    var dayNoteText = checkForLocalNote(thisDate);
+    console.log(dayNoteText);
+    var dayNote = $('<div class="day-note editable">').text(dayNoteText);
 
 
     var dayDateContainer = $('<div class="day-date-container day-title-brdr">');
@@ -53,6 +57,7 @@ var inputSwitch = function(element) {
     $(element).hide();
     $inputTxt.focus();
     $('.note-textarea').blur(function() {
+        createSetNoteObj(getEditableDate($(element).parent()), $(this).val());
         inputReSwitch(this);
     });
 }
@@ -85,6 +90,10 @@ $(document).on('ready', function() {
             getDatesArray(daysLoadScroll, 'day-container').map(createDayContainer);
         }
 
+    })
+
+    $(window).unload(function() {
+        saveNotesLocal();
     })
 
 });

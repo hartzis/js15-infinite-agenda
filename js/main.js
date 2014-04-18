@@ -28,7 +28,7 @@ var createDay = function(dayToCreate) {
 }
 
 var createDayContainer = function(dayToCreate) {
-    console.log('createDayContainer:', dayToCreate);
+    // console.log('createDayContainer:', dayToCreate);
     // console.log('pooque');
     $('.calendar-container').append(createDay(dayToCreate));
 
@@ -61,11 +61,11 @@ $(document).on('ready', function() {
 
     // create dom elements
 
-    //create todays dom element
+    // create todays dom element
     createDayContainer(getDateObject(new Date()));
 
-    //create 10 more days from last day element
-    getDatesArray(10, 'day-container').map(createDayContainer);
+    // create 6 more days from last day element
+    getDatesArray(6, 'day-container').map(createDayContainer);
 
 
     //create event handlers
@@ -73,6 +73,18 @@ $(document).on('ready', function() {
         inputSwitch(this);
     });
 
+    $(document).on('scroll', function() {
+        // track the bottom .75 of the window
+        // if it passes the bottom .85 of document,
+        // make one more week of days
+        var win = $(window);
+        var posWinBottom75 = ((win.height() * .75) + win.scrollTop()) / $(this).height();
+        console.log(posWinBottom75);
+        if (posWinBottom75 >= .85) {
+            console.log('make new ones!!');
+            getDatesArray(7, 'day-container').map(createDayContainer);
+        }
 
+    })
 
 });

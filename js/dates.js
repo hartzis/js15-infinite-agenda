@@ -30,8 +30,8 @@ var getDatesArray = function(totalDates, dayContainerClass) {
     var datesArray = [];
     for (var i = 1; i <= totalDates; i++) {
         trackDay.setDate(lastDate.getDate() + i);
-        console.log('trackDay:', trackDay);
-        console.log('call getDateObject:', getDateObject(trackDay));
+        // console.log('trackDay:', trackDay);
+        // console.log('call getDateObject:', getDateObject(trackDay));
         datesArray.push(getDateObject(trackDay));
     };
 

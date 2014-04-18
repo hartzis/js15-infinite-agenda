@@ -1,8 +1,8 @@
 'use strict'
 // declare variables
 
-var initialLoadDays = 10;
-
+var daysLoadScroll = 7;
+var daysLoadInitial = 6;
 
 // rendering functions
 
@@ -65,11 +65,11 @@ $(document).on('ready', function() {
     createDayContainer(getDateObject(new Date()));
 
     // create 6 more days from last day element
-    getDatesArray(6, 'day-container').map(createDayContainer);
+    getDatesArray(daysLoadInitial, 'day-container').map(createDayContainer);
 
 
     //create event handlers
-    $('.editable').on('click', function() {
+    $(document).on('click', '.editable', function() {
         inputSwitch(this);
     });
 
@@ -82,7 +82,7 @@ $(document).on('ready', function() {
         console.log(posWinBottom75);
         if (posWinBottom75 >= .85) {
             console.log('make new ones!!');
-            getDatesArray(7, 'day-container').map(createDayContainer);
+            getDatesArray(daysLoadScroll, 'day-container').map(createDayContainer);
         }
 
     })

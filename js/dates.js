@@ -1,10 +1,4 @@
 'use strict'
-// declare variables
-
-var startDate = new Date();
-
-var lastDate = new Date();
-
 
 // date parsing functions
 
@@ -21,7 +15,7 @@ var getDateObject = function(thisDate) {
     };
     // console.log('getDateObject - object:', dateObject);
     return dateObject;
-}
+};
 
 // return request dates in array
 var getDatesArray = function(totalDates, dayContainerClass) {
@@ -38,7 +32,7 @@ var getDatesArray = function(totalDates, dayContainerClass) {
     // console.log(datesArray);
     return datesArray;
 
-}
+};
 
 // get the last day in DOM using the day container
 var getLastDate = function(dayContainerClass) {
@@ -52,4 +46,4 @@ var getLastDate = function(dayContainerClass) {
     // console.log('getLastDate:', lastDate);
     var newDate = new Date(lastDate);
     return newDate;
-}
+};

@@ -1,44 +1,36 @@
 'use strict'
 // declare variables
 
-var initialLoadTotal = 10;
-// var testDay = {
-//     date: '17',
-//     day: 'Thursday',
-//     month: 'April'
-// };
-var testDay = ['17', 'Thursday', 'April'];
+var initialLoadDays = 10;
+
 
 // rendering functions
 
-var createDayTitle = function(dayToCreate) {
-    console.log('createDayTitle:', dayToCreate);
-    var toSetDay = dayToCreate[0];
-    console.log('createDayTitle:', toSetDay);
-    var dayDate = $('<div class="day-date day">').text(toSetDay);
-    var dayDay = $('<div class="day-of-week day">').text(dayToCreate[1]);
-    var dayMonth = $('<div class="day-title day">').text(dayToCreate[2]);
-    var dayHeader = $('<div class="day-header">');
+var createDay = function(dayToCreate) {
+
+    var thisDate = dayToCreate.weekday + '-' + dayToCreate.month + '-' + dayToCreate.day + '-' + dayToCreate.year;
+
+    var dayContainer = $('<div class="day-container">').attr("data-date", thisDate);
+
+    var dayDate = $('<div class="day-date day">').text(dayToCreate.day);
+    var dayWeekDay = $('<div class="day-of-week day">').text(dayToCreate.weekday);
+    var dayMonth = $('<div class="day-title day-month">').text(dayToCreate.month);
+    var dayYear = $('<div class="day-title day-year">').text(dayToCreate.year);
+    var dayNote = $('<div class="day-note editable">').text('Enter Day Events Here');
+
 
     var dayDateContainer = $('<div class="day-date-container day-title-brdr">');
 
-    dayDateContainer.append(dayDate, dayDay, dayMonth);
+    dayContainer.append(dayDateContainer.append(dayDate, dayWeekDay, dayMonth, dayYear), dayNote);
 
-    return dayDateContainer;
-
-}
-
-var createDayNote = function() {
-    var dayNote = $('<div class="day-not editable>')
-        .text('Enter Day Events Here');
-    return dayNote;
+    return dayContainer;
 
 }
 
 var createDayContainer = function(dayToCreate) {
-    var newDayToCreate = dayToCreate.slice(0)
-    console.log('createDayContainer:', newDayToCreate);
-    ('.calendar-container').append(createDayTitle(newDayToCreate), createDayTitle());
+    console.log('createDayContainer:', dayToCreate);
+    // console.log('pooque');
+    $('.calendar-container').append(createDay(dayToCreate));
 
 }
 
@@ -67,12 +59,14 @@ var inputSwitch = function(element) {
 
 $(document).on('ready', function() {
 
-    //create dom objects
-    // for (var i = 0; i <= initialLoadTotal; i++) {
+    // create dom elements
 
-    // };
+    //create todays dom element
+    createDayContainer(getDateObject(new Date()));
 
-    createDayContainer(testDay);
+    //create 10 more days from last day element
+    getDatesArray(10, 'day-container').map(createDayContainer);
+
 
     //create event handlers
     $('.editable').on('click', function() {
